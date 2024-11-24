@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Indian Map</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f8ff;
+    }
+    #mapContainer {
+      max-width: 80%;
+      max-height: 80%;
+    }
+    svg {
+      width: 100%;
+      height: auto;
+    }
+    .state {
+      fill: #cce5ff;
+      stroke: #000;
+      stroke-width: 0.5;
+      cursor: pointer;
+    }
+    .state:hover {
+      fill: #1e90ff;
+    }
+    #info {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 1.2em;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div id="mapContainer">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="67.25 8.25 754.5 979.5">
+      <!-- Example paths for states (simplified for illustration) -->
+      <path
+        id="state1"
+        class="state"
+        d="M100 300 L150 250 L200 300 L150 350 Z"
+      />
+      <path
+        id="state2"
+        class="state"
+        d="M250 350 L300 300 L350 350 L300 400 Z"
+      />
+      <path
+        id="state3"
+        class="state"
+        d="M200 400 L250 350 L300 400 L250 450 Z"
+      />
+    </svg>
+    <div id="info">Hover over a state to see its name.</div>
+  </div>
+
+  <script>
+    // State names for display
+    const stateInfo = {
+      state1: "State 1: Jammu & Kashmir",
+      state2: "State 2: Punjab",
+      state3: "State 3: Haryana"
+    };
+
+    // Handle hover and update info
+    document.querySelectorAll(".state").forEach((state) => {
+      state.addEventListener("mouseover", (e) => {
+        document.getElementById("info").textContent = stateInfo[e.target.id];
+      });
+      state.addEventListener("mouseout", () => {
+        document.getElementById("info").textContent = "Hover over a state to see its name.";
+      });
+    });
+  </script>
+</body>
+</html>
